@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: layout(~{::section})}">
+
+<section>
+
+<h2 class="text-accent mb-3"
+    th:text="${collection.name}">
+</h2>
+
+<p th:text="${collection.description}"></p>
+
+<a th:href="@{/collections}"
+   class="btn btn-outline-info btn-sm mb-3">
+Back to Collections
+</a>
+
+<hr>
+
+<h4 class="text-accent">
+Items in Collection
+</h4>
+
+<div th:if="${#lists.isEmpty(items)}"
+     class="text-muted">
+
+No items in this collection yet.
+
+</div>
+
+<div class="row"
+     th:if="${!#lists.isEmpty(items)}">
+
+<div class="col-md-4 mb-3"
+     th:each="item : ${items}">
+
+<div class="card item-card h-100">
+
+<img th:if="${item.thumbnailUrl}"
+     th:src="${item.thumbnailUrl}"
+     class="card-img-top">
+
+<div class="card-body">
+
+<h6 class="text-accent"
+    th:text="${item.title}">
+</h6>
+
+<div class="d-flex gap-2">
+
+<a th:href="@{/items/{id}(id=${item.itemId})}"
+   class="btn btn-outline-info btn-sm">
+View
+</a>
+
+<form method="post"
+      th:action="@{/collections/remove-item}">
+
+<input type="hidden"
+       name="collectionId"
+       th:value="${collection.collectionId}">
+
+<input type="hidden"
+       name="itemId"
+       th:value="${item.itemId}">
+
+<button class="btn btn-outline-danger btn-sm">
+Remove
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</html>

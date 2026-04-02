@@ -1,0 +1,406 @@
+ /* ==================================================
+   GLOBAL THEME
+================================================== */
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #0e0e0e;
+    color: #ffffff;
+}
+
+
+/* ==================================================
+   COLOR SYSTEM
+================================================== */
+
+:root {
+
+    --nasa-red: #fc3c23;
+    --nasa-blue: #0a3c91;
+    --nasa-accent: #ba1e68;
+
+    --space-black: #0e0e0e;
+    --space-card: #111111;
+    --space-border: #222222;
+
+}
+
+
+/* ==================================================
+   BACKGROUND HELPERS
+================================================== */
+
+.bg-black {
+    background-color: #0e0e0e;
+}
+
+
+/* ==================================================
+   TEXT
+================================================== */
+
+.text-accent {
+    color: var(--nasa-red);
+}
+
+.text-blue {
+    color: var(--nasa-blue);
+}
+
+/* Improve readability of muted text */
+
+.text-muted {
+    color: #cfcfcf !important;
+}
+
+/* Ensure card text stays readable */
+
+.card p,
+.card span,
+.card h5,
+.card h6 {
+    color: #ffffff;
+}
+
+
+/* ==================================================
+   BORDERS
+================================================== */
+
+.border-accent {
+    border-color: var(--nasa-red) !important;
+}
+
+
+/* ==================================================
+   CARDS
+================================================== */
+
+.card {
+
+    background-color: var(--space-card);
+
+    border: 1px solid var(--space-border);
+
+    border-radius: 10px;
+
+    transition: all 0.25s ease;
+
+}
+
+.card:hover {
+
+    border-color: var(--nasa-red);
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 6px 18px rgba(252,60,35,0.25);
+
+}
+
+
+/* Card titles */
+
+.card-title {
+    color: #ffffff;
+}
+
+
+/* Annotation metadata */
+
+.card-body small {
+    color: #bbbbbb;
+}
+
+
+/* ==================================================
+   ITEM MEDIA CARDS
+================================================== */
+
+.item-card {
+
+    background: var(--space-card);
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--space-border);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+
+}
+
+.item-card:hover {
+
+    transform: translateY(-6px);
+
+    border-color: var(--nasa-red);
+
+    box-shadow: 0 10px 25px rgba(252,60,35,0.25);
+
+}
+
+
+/* ==================================================
+   IMAGE HANDLING (FIXES DIFFERENT IMAGE SIZES)
+================================================== */
+
+.card-img-top {
+
+    width: 100%;
+
+    height: 220px;
+
+    object-fit: cover;
+
+    border-bottom: 1px solid #222;
+
+}
+
+
+/* Image container */
+
+.item-image {
+
+    position: relative;
+
+    height: 220px;
+
+    overflow: hidden;
+
+}
+
+.item-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.35s ease;
+
+}
+
+.item-card:hover img {
+
+    transform: scale(1.05);
+
+}
+
+/* ==================================================
+   ITEM DETAIL IMAGE
+================================================== */
+
+.item-detail-image {
+
+    width: 100%;
+
+    max-height: 650px;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+
+    border: 1px solid #222;
+
+    margin-bottom: 20px;
+
+    background: black;
+
+}
+
+/* ==================================================
+   GRADIENT OVERLAY
+================================================== */
+
+.item-overlay {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    padding: 12px;
+
+    background: linear-gradient(
+        transparent,
+        rgba(0,0,0,0.85)
+    );
+
+}
+
+
+/* ==================================================
+   ITEM TITLE
+================================================== */
+
+.item-title {
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    margin-bottom: 6px;
+
+}
+
+
+/* ==================================================
+   SOURCE BADGE
+================================================== */
+
+.source-badge {
+
+    background: var(--nasa-blue);
+
+    color: white;
+
+    font-size: 0.7rem;
+
+    padding: 3px 7px;
+
+    border-radius: 5px;
+
+}
+
+
+/* ==================================================
+   BUTTONS
+================================================== */
+
+.btn-primary {
+
+    background-color: var(--nasa-red);
+
+    border: none;
+
+    color: white;
+
+}
+
+.btn-primary:hover {
+
+    background-color: var(--nasa-accent);
+
+}
+
+
+/* Secondary buttons */
+
+.btn-outline-info {
+
+    border-color: var(--nasa-blue);
+
+    color: var(--nasa-blue);
+
+}
+
+.btn-outline-info:hover {
+
+    background-color: var(--nasa-blue);
+
+    color: white;
+
+}
+
+
+/* ==================================================
+   FORMS
+================================================== */
+
+.form-control,
+.form-select {
+
+    background-color: #1a1a1a;
+
+    border: 1px solid #333;
+
+    color: white;
+
+}
+
+.form-control:focus,
+.form-select:focus {
+
+    border-color: var(--nasa-red);
+
+    box-shadow: 0 0 6px rgba(252,60,35,0.4);
+
+    background-color: #1a1a1a;
+
+    color: white;
+
+}
+
+
+/* ==================================================
+   NAVBAR
+================================================== */
+
+.navbar {
+
+    background-color: #0e0e0e;
+
+    border-bottom: 1px solid #222;
+
+}
+
+.navbar-brand {
+
+    color: var(--nasa-red) !important;
+
+    font-weight: 600;
+
+}
+
+.nav-link {
+
+    color: #ffffff !important;
+
+}
+
+.nav-link:hover {
+
+    color: var(--nasa-red) !important;
+
+}
+
+
+/* ==================================================
+   SEPARATORS
+================================================== */
+
+hr {
+    border-color: #333;
+}
+
+
+/* ==================================================
+   ACCENT HEADER LINE (SMALL UI POLISH)
+================================================== */
+
+.text-accent::after {
+
+    content: "";
+
+    display: block;
+
+    width: 40px;
+
+    height: 2px;
+
+    background: var(--nasa-red);
+
+    margin-top: 6px;
+
+    opacity: 0.7;
+
+}

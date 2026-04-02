@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: layout(~{::section})}">
+
+<section>
+
+<div class="text-center mb-5">
+
+<h1 class="text-accent display-5 mb-3">
+NASA Space Media Explorer
+</h1>
+
+<p class="lead text-muted">
+Browse, organize, and annotate NASA space imagery and scientific media.
+</p>
+
+<div class="mt-4">
+
+<a th:href="@{/items}"
+   class="btn btn-primary btn-lg me-2">
+
+Browse NASA Items
+
+</a>
+
+</div>
+
+</div>
+</div>
+
+<!-- NASA API banner -->
+
+<div class="text-center mb-5">
+
+<p class="small text-muted">
+
+Powered by NASA Open APIs • APOD • Image Library • Open Science Data Repository
+
+</p>
+
+</div>
+
+<!-- FEATURE CARDS -->
+
+<div class="row text-center">
+
+<div class="col-md-4 mb-4">
+
+<div class="card item-card h-100">
+
+<div class="card-body">
+
+<h5 class="text-accent mb-3">
+Explore Space Media
+</h5>
+
+<p class="text-muted small">
+
+Browse NASA imagery, datasets, and scientific media retrieved from
+multiple NASA APIs including Astronomy Picture of the Day (APOD),
+the NASA Image Library, and the Open Science Data Repository (OSDR).
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-md-4 mb-4">
+
+<div class="card item-card h-100">
+
+<div class="card-body">
+
+<h5 class="text-accent mb-3">
+Create Research Collections
+</h5>
+
+<p class="text-muted small">
+Organize interesting discoveries into personal collections
+for research, study, or mission exploration.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-md-4 mb-4">
+
+<div class="card item-card h-100">
+
+<div class="card-body">
+
+<h5 class="text-accent mb-3">
+Document Observations
+</h5>
+
+<p class="text-muted small">
+Add annotations and notes to items to record observations,
+insights, or scientific context.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ABOUT SECTION -->
+
+<div class="card item-card mt-5">
+
+<div class="card-body text-center">
+
+<h4 class="text-accent mb-3">
+About This Explorer
+</h4>
+
+<p class="text-muted">
+
+The NASA Space Media Explorer provides a structured interface
+for exploring publicly available NASA media resources. Users
+can browse space imagery, organize collections, and attach
+annotations to media items for research and educational use.
+
+</p>
+
+</div>
+
+</div>
+
+
+</section>
+
+</html>

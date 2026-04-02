@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<body>
+
+<nav th:fragment="nav"
+     class="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-info">
+
+    <div class="container-fluid">
+
+        <a class="navbar-brand text-accent"
+           th:href="@{/}">
+            NASA Explorer
+        </a>
+
+        <div class="navbar-nav">
+
+            <a class="nav-link"
+               th:href="@{/}">
+                Home
+            </a>
+
+            <a class="nav-link"
+               th:href="@{/items}">
+                Items
+            </a>
+
+            <a class="nav-link"
+               th:href="@{/collections}">
+                Collections
+            </a>
+
+            <a class="nav-link"
+               sec:authorize="hasRole('ADMIN')"
+               th:href="@{/admin/ingest}">
+                Admin
+            </a>
+
+        </div>
+
+        <!-- Right side auth section -->
+        <div class="d-flex ms-auto align-items-center">
+
+            <!-- Logged in -->
+            <div sec:authorize="isAuthenticated()"
+                 class="d-flex align-items-center gap-3">
+
+                <span class="px-3 py-1 rounded-pill border border-accent text-accent small"
+                      sec:authentication="name">
+                </span>
+
+                <a class="btn btn-outline-danger btn-sm"
+                   th:href="@{/logout}">
+                    Logout
+                </a>
+
+            </div>
+
+            <!-- Not logged in -->
+            <div sec:authorize="!isAuthenticated()"
+                 class="d-flex align-items-center gap-2">
+
+                <a class="btn btn-outline-info btn-sm"
+                   th:href="@{/login}">
+                    Login
+                </a>
+
+                <a class="btn btn-primary btn-sm"
+                   th:href="@{/register}">
+                    Register
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+</body>
+</html>

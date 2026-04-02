@@ -1,0 +1,12 @@
+com.mcconihay.nasamediaexplorer
+com.mcconihay.nasamediaexplorer.config
+com.mcconihay.nasamediaexplorer.controller
+com.mcconihay.nasamediaexplorer.dto
+com.mcconihay.nasamediaexplorer.entity
+com.mcconihay.nasamediaexplorer.exception
+com.mcconihay.nasamediaexplorer.integration.nasa
+com.mcconihay.nasamediaexplorer.mapper
+com.mcconihay.nasamediaexplorer.repository
+com.mcconihay.nasamediaexplorer.security
+com.mcconihay.nasamediaexplorer.service
+com.mcconihay.nasamediaexplorer.service.impl

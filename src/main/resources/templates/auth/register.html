@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: layout(~{::section})}">
+
+<section class="container" style="max-width: 420px;">
+
+<h2 class="text-accent mb-4 text-center">
+Register
+</h2>
+
+<form method="post"
+      th:action="@{/register}"
+      class="needs-validation"
+      novalidate>
+
+<div class="mb-3">
+
+<input name="username"
+       class="form-control"
+       placeholder="Username"
+       minlength="3"
+       required>
+
+<div class="invalid-feedback">
+Username is required.
+</div>
+
+</div>
+
+<div class="mb-3">
+
+<input name="email"
+       type="email"
+       class="form-control"
+       placeholder="Email address"
+       required>
+
+<div class="invalid-feedback">
+Enter a valid email address.
+</div>
+
+</div>
+
+<div class="mb-3">
+
+<input name="password"
+       type="password"
+       class="form-control"
+       placeholder="Password"
+       minlength="6"
+       required>
+
+<div class="invalid-feedback">
+Password must be at least 6 characters.
+</div>
+
+</div>
+
+<button class="btn btn-primary w-100">
+Create Account
+</button>
+
+</form>
+
+</section>
+
+</html>

@@ -4,6 +4,7 @@ import com.mcconihay.nasamediaexplorer.entity.CollectionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Repository responsible for CollectionEntity persistence.
@@ -20,4 +21,7 @@ public interface CollectionRepository extends JpaRepository<CollectionEntity, Lo
      * @return list of collections
      */
     List<CollectionEntity> findByUserUserId(Long userId);
+    
+    Optional<CollectionEntity> findByCollectionIdAndUserUserId(Long collectionId, Long userId);
+
 }

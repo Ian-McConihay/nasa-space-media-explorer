@@ -30,20 +30,41 @@ public class SecurityConfig {
      * @return the configured SecurityFilterChain
      * @throws Exception if security configuration fails
      */
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http)
-            throws Exception {
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        http
-            .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/api/public/**").permitAll()
-                    .anyRequest().authenticated()
-            )
-            .httpBasic(basic -> {});
+	    http
+	        .csrf(csrf -> csrf.disable())
+	        .authorizeHttpRequests(auth -> auth
 
-        return http.build();
-    }
+	            .requestMatchers(
+	                    "/",
+	                    "/login",
+	                    "/register",
+	                    "/css/**",
+	                    "/js/**"
+	            ).permitAll()
+
+	            .requestMatchers("/admin/**")
+	            .hasRole("ADMIN")
+
+	            .anyRequest().authenticated()
+	        )
+
+	        .formLogin(login -> login
+	                .loginPage("/login")
+	                .defaultSuccessUrl("/items", true)
+	                .permitAll()
+	        )
+
+	        .logout(logout -> logout
+	                .logoutUrl("/logout")
+	                .logoutSuccessUrl("/")
+	                .permitAll()
+	        );
+
+	    return http.build();
+	}
 
     /**
      * Provides the password encoder used for hashing user passwords.

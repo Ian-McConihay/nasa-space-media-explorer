@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: layout(~{::section})}">
+
+<section>
+
+<h2 th:text="${item.title}"
+    class="text-accent mb-3">
+</h2>
+
+<span class="badge bg-info text-dark mb-3"
+      th:text="${item.mediaType}">
+</span>
+
+<div class="mb-4">
+
+<img th:if="${item.mediaType == 'image'}"
+     th:src="${item.assetUrl != null ? item.assetUrl : item.thumbnailUrl}"
+     class="item-detail-image">
+
+<video th:if="${item.mediaType == 'video'}"
+       controls
+       class="item-detail-image">
+
+    <source th:src="${item.assetUrl}" type="video/mp4">
+
+</video>
+
+<a th:if="${item.mediaType == 'dataset'}"
+   th:href="${item.assetUrl}"
+   target="_blank"
+   class="btn btn-outline-info">
+View Dataset
+</a>
+
+</div>
+
+<p>
+<strong>Source:</strong>
+<span th:text="${item.sourceApi}"></span>
+</p>
+
+<p>
+<strong>Media Type:</strong>
+<span th:text="${item.mediaType}"></span>
+</p>
+
+<p th:if="${item.apodDate != null}">
+<strong>APOD Date:</strong>
+<span th:text="${item.apodDate}"></span>
+</p>
+
+<p th:text="${item.description}"></p>
+
+<a th:if="${item.assetUrl}"
+   th:href="${item.assetUrl}"
+   target="_blank"
+   class="btn btn-primary mb-4">
+Open NASA Asset
+</a>
+
+<hr>
+
+<h5 class="text-accent mt-4">
+Add to Collection
+</h5>
+
+<form method="post"
+      th:action="@{/collections/add-item}">
+
+<input type="hidden"
+       name="itemId"
+       th:value="${item.itemId}">
+
+<select name="collectionId"
+        class="form-select mb-2"
+        required>
+
+<option value="" disabled selected>
+Select Collection
+</option>
+
+<option th:each="c : ${collections}"
+        th:value="${c.collectionId}"
+        th:text="${c.name}">
+</option>
+
+</select>
+
+<button class="btn btn-outline-success">
+Add
+</button>
+
+</form>
+
+<hr>
+
+<h4 class="text-accent mt-4">
+Annotations
+</h4>
+
+<div th:if="${annotations.isEmpty()}">
+
+<p class="text-muted">
+No annotations yet.
+</p>
+
+</div>
+
+<div th:each="a : ${annotations}"
+     class="card item-card mb-2">
+
+<div class="card-body">
+
+<div class="small text-muted mb-2">
+
+<span th:text="${a.user.username}"></span>
+
+•
+
+<span th:text="${#temporals.format(a.createdAt,'yyyy-MM-dd HH:mm')}"></span>
+
+</div>
+
+<p th:text="${a.note}"></p>
+
+<form method="post"
+      th:action="@{/annotations/delete}"
+      class="mt-2">
+
+<input type="hidden"
+       name="annotationId"
+       th:value="${a.annotationId}">
+
+<input type="hidden"
+       name="itemId"
+       th:value="${item.itemId}">
+
+<button class="btn btn-outline-danger btn-sm">
+Delete
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<hr>
+
+<h5 class="text-accent mt-4">
+Add Annotation
+</h5>
+
+<form method="post"
+      th:action="@{/annotations/create}">
+
+<input type="hidden"
+       name="itemId"
+       th:value="${item.itemId}">
+
+<textarea name="note"
+          class="form-control mb-2"
+          rows="3"
+          placeholder="Add your notes here"
+          required></textarea>
+
+<button class="btn btn-outline-info">
+Save Annotation
+</button>
+
+</form>
+
+</section>
+
+</html>

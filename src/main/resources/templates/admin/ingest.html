@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: layout(~{::section})}">
+
+<section>
+
+    <h2 class="text-accent mb-4">
+        Admin Ingest NASA Data
+    </h2>
+
+    <!-- SUCCESS / ERROR ALERTS -->
+    <div th:if="${success}" class="alert alert-success">
+        <span th:text="${success}"></span>
+    </div>
+
+    <div th:if="${error}" class="alert alert-danger">
+        <span th:text="${error}"></span>
+    </div>
+
+    <!-- APOD -->
+    <form method="post"
+          th:action="@{/admin/ingest/apod}"
+          class="mb-4">
+
+        <button class="btn btn-primary">
+            Ingest Today APOD
+        </button>
+
+    </form>
+
+    <!-- IMAGE INGEST -->
+    <form method="post"
+          th:action="@{/admin/ingest/images}"
+          class="mb-4">
+
+        <input name="query"
+               class="form-control mb-2"
+               placeholder="Search term">
+
+        <button class="btn btn-outline-info">
+            Ingest NASA Images
+        </button>
+
+    </form>
+
+    <!-- OSDR INGEST -->
+    <form method="post"
+          th:action="@{/admin/ingest/osdr}"
+          class="mb-4">
+
+        <input name="query"
+               class="form-control mb-2"
+               placeholder="Search datasets">
+
+        <button class="btn btn-outline-info">
+            Ingest NASA OSDR Data
+        </button>
+
+    </form>
+
+</section>
+
+</html>

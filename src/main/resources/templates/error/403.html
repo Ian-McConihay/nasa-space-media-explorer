@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: layout(~{::section})}">
+
+<section class="text-center">
+
+<h1 class="text-accent mb-3">
+403 - Access Denied
+</h1>
+
+<p class="text-muted mb-4">
+You do not have permission to access this resource.
+</p>
+
+<a th:href="@{/}"
+   class="btn btn-outline-info">
+Return Home
+</a>
+
+</section>
+
+</html>

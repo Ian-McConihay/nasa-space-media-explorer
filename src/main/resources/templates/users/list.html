@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: content}">
+
+<h2 class="text-accent mb-3">
+    NASA Items
+</h2>
+
+<!-- I can possibly delete this page -->
+<form method="get"
+      th:action="@{/items/search}"
+      class="mb-4">
+
+    <div class="input-group">
+
+        <input type="text"
+               name="query"
+               th:value="${query}"
+               class="form-control"
+               placeholder="Search NASA items...">
+
+        <button class="btn btn-primary"
+                type="submit">
+            Search
+        </button>
+
+    </div>
+
+</form>
+
+<!-- ITEMS GRID -->
+<div class="row">
+
+    <div class="col-md-4 mb-4"
+         th:each="item : ${items.content}">
+
+        <div class="card h-100">
+
+            <img th:if="${item.thumbnailUrl}"
+                 th:src="${item.thumbnailUrl}"
+                 class="card-img-top">
+
+            <div class="card-body">
+
+                <h5 th:text="${item.title}">
+                </h5>
+
+                <p class="text-secondary small"
+                   th:text="${item.sourceApi}">
+                </p>
+
+                <a th:href="@{/items/{id}(id=${item.itemId})}"
+                   class="btn btn-outline-info btn-sm">
+                    View
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- PAGINATION -->
+<div class="mt-3">
+
+    <a th:if="${items.hasPrevious()}"
+       th:href="@{/items(page=${items.number - 1})}"
+       class="btn btn-outline-info btn-sm">
+        Previous
+    </a>
+
+    <a th:if="${items.hasNext()}"
+       th:href="@{/items(page=${items.number + 1})}"
+       class="btn btn-outline-info btn-sm">
+        Next
+    </a>
+
+</div>
+
+</html>

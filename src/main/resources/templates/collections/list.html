@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: layout(~{::section})}">
+
+<section>
+
+<h2 class="text-accent mb-4">
+User Collections
+</h2>
+
+<h5 class="text-accent mt-4">
+Create New Collection
+</h5>
+
+<form method="post"
+      th:action="@{/collections/create}"
+      class="mb-4">
+
+<input name="name"
+       class="form-control mb-2"
+       placeholder="Collection Name"
+       required>
+
+<textarea name="description"
+          class="form-control mb-3"
+          rows="3"
+          placeholder="Description"></textarea>
+
+<button class="btn btn-primary">
+Create Collection
+</button>
+
+</form>
+
+<hr>
+
+<div th:if="${collections.isEmpty()}">
+
+<p class="text-muted">
+No collections found.
+</p>
+
+</div>
+
+<div class="row"
+     th:if="${!collections.isEmpty()}">
+
+<div class="col-md-4 mb-3"
+     th:each="collection : ${collections}">
+
+<div class="card item-card h-100">
+
+<div class="card-body">
+
+<h5 class="text-accent"
+    th:text="${collection.name}">
+</h5>
+
+<p class="small text-muted"
+   th:text="${collection.description}">
+</p>
+
+<div class="d-flex gap-2">
+
+<a th:href="@{/collections/{id}(id=${collection.collectionId})}"
+   class="btn btn-outline-info btn-sm">
+Open
+</a>
+
+<form method="post"
+      th:action="@{/collections/delete}">
+
+<input type="hidden"
+       name="collectionId"
+       th:value="${collection.collectionId}">
+
+<button class="btn btn-outline-danger btn-sm">
+Delete
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</html>

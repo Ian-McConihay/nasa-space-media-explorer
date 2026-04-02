@@ -1,6 +1,8 @@
 package com.mcconihay.nasamediaexplorer.service;
 
 import com.mcconihay.nasamediaexplorer.entity.ItemEntity;
+import com.mcconihay.nasamediaexplorer.entity.NasaSourceApi;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -53,4 +55,13 @@ public interface ItemService {
      * @return page of matching items
      */
     Page<ItemEntity> searchByTitle(String query, Pageable pageable);
+    
+    /**
+     * Advanced search with filtering.
+     */
+    Page<ItemEntity> searchItems(
+            String title,
+            String mediaType,
+            NasaSourceApi sourceApi,
+            Pageable pageable);
 }

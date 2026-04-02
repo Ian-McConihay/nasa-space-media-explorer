@@ -1,6 +1,7 @@
 package com.mcconihay.nasamediaexplorer.service.impl;
 
 import com.mcconihay.nasamediaexplorer.entity.ItemEntity;
+import com.mcconihay.nasamediaexplorer.entity.NasaSourceApi;
 import com.mcconihay.nasamediaexplorer.exception.ResourceNotFoundException;
 import com.mcconihay.nasamediaexplorer.repository.ItemRepository;
 import com.mcconihay.nasamediaexplorer.service.ItemService;
@@ -71,5 +72,28 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public Page<ItemEntity> searchByTitle(String query, Pageable pageable) {
         return itemRepository.findByTitleContainingIgnoreCase(query, pageable);
+    }
+
+    /**
+     * Search items with optional filters.
+     */
+    @Override
+    public Page<ItemEntity> searchItems(
+            String title,
+            String mediaType,
+            NasaSourceApi sourceApi,
+            Pageable pageable) {
+
+        String titleFilter =
+                (title == null || title.isBlank()) ? null : title;
+
+        String mediaTypeFilter =
+                (mediaType == null || mediaType.isBlank()) ? null : mediaType;
+
+        return itemRepository.searchItems(
+                titleFilter,
+                mediaTypeFilter,
+                sourceApi,
+                pageable);
     }
 }

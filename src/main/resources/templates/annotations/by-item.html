@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: layout(~{::section})}">
+
+<section>
+
+<h2 class="text-accent mb-3">
+Item Annotations
+</h2>
+
+<form method="post"
+      th:action="@{/annotations/create}"
+      class="mb-4">
+
+<input type="hidden"
+       name="itemId"
+       th:value="${itemId}">
+
+<div class="mb-3">
+
+<textarea name="note"
+          class="form-control"
+          rows="3"
+          placeholder="Enter annotation"
+          required></textarea>
+
+</div>
+
+<button class="btn btn-primary">
+Add Annotation
+</button>
+
+</form>
+
+<hr>
+
+<div th:if="${annotations.isEmpty()}">
+
+<p class="text-muted">
+No annotations yet.
+</p>
+
+</div>
+
+<div th:each="annotation : ${annotations}"
+     class="card item-card mb-3">
+
+<div class="card-body">
+
+<div class="small text-muted mb-2">
+
+<span th:text="${annotation.user.username}"></span>
+
+•
+
+<span th:text="${#temporals.format(annotation.createdAt,'yyyy-MM-dd HH:mm')}"></span>
+
+</div>
+
+<p th:text="${annotation.note}"></p>
+
+<form method="post"
+      th:action="@{/annotations/delete}"
+      class="mt-2">
+
+<input type="hidden"
+       name="annotationId"
+       th:value="${annotation.annotationId}">
+
+<input type="hidden"
+       name="itemId"
+       th:value="${itemId}">
+
+<button class="btn btn-outline-danger btn-sm">
+Delete
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<a th:href="@{/items}"
+   class="btn btn-outline-info mt-3">
+Back to Items
+</a>
+
+</section>
+
+</html>

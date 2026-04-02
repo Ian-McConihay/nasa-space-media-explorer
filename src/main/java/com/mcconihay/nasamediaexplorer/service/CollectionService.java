@@ -1,6 +1,7 @@
 package com.mcconihay.nasamediaexplorer.service;
 
 import com.mcconihay.nasamediaexplorer.entity.CollectionEntity;
+import com.mcconihay.nasamediaexplorer.entity.ItemEntity;
 
 import java.util.List;
 import java.util.Optional;
@@ -43,4 +44,10 @@ public interface CollectionService {
      * @param id collection identifier
      */
     void deleteCollection(Long id);
+    
+    void addItemToCollection(Long collectionId, Long itemId);
+    
+    void removeItemFromCollection(Long collectionId, Long itemId);
+
+    List<ItemEntity> getItemsInCollection(Long collectionId);
 }
