@@ -233,30 +233,6 @@ if (itemRepository.existsBySourceApiAndNasaId(
 
 ---
 
-## Screenshots
-
-### Home Page
-
-![Home Page](media/home.png)
-
-### Items Page
-
-![Items Page](media/items.png)
-
-### Item Detail Page
-
-![Item Detail Page](media/item-detail.png)
-
-### Collections Page
-
-![Collections Page](media/collections.png)
-
-### Admin Ingest Page
-
-![Admin Ingest Page](media/admin-ingest.png)
-
----
-
 ## User Guide
 
 ### Register an Account
